@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e669b92e36bb0a1409e73e282b88cec6, type: 3}
-  m_Name: Power
+  m_Name: PowerRange
   m_EditorClassIdentifier: 
-  upgradeId: 2
-  upgradeName: Unlock Power
-  upgradeDescription: On click unleash a wave that transform nearby shapes to followers
+  upgradeId: 4
+  upgradeName: Power Range
+  upgradeDescription: Increase the range of your power

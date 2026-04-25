@@ -25,6 +25,6 @@ public class Follower : MonoBehaviour
         Vector3 targetRotation = new Vector3(0, 0, angle);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(targetRotation), turnSpeed * Time.deltaTime);
 
-        Destroy(gameObject, 150f);
+        Destroy(gameObject, 100f);
     }
 }

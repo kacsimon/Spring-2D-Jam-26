@@ -4,7 +4,8 @@ public class Shapes : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] Color[] colors;
-    
+    [SerializeField] ParticleSystem transformationPS;
+
     Follower follower;
     BoxCollider2D boxCollider2D;
     SpriteRenderer spriteRenderer;
@@ -34,6 +35,9 @@ public class Shapes : MonoBehaviour
             boxCollider2D.enabled = false;
             follower.Target = collision.gameObject.transform;
             spriteRenderer.color = colors[Random.Range(0, colors.Length)];
+            ParticleSystem.MainModule transformationPSMain = transformationPS.main;
+            transformationPSMain.startColor = spriteRenderer.color;
+            transformationPS.Play();
         }
     }
 }

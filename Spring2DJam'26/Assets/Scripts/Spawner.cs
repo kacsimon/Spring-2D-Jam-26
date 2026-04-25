@@ -3,7 +3,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] Transform shapePrefab;
-    [SerializeField] float spawnTime = 3f;
+    [SerializeField] float spawnTime = 1f;
 
     float timer = 0f;
 
@@ -47,19 +47,40 @@ public class Spawner : MonoBehaviour
         switch (GameManager.Instance.GetFollowersNumber())
         {
             case 50:
-                spawnTime = 2.5f;
+                spawnTime = 0.9f;
                 break;
             case 100:
-                spawnTime = 2f;
+                spawnTime = 0.8f;
                 break;
             case 150:
-                spawnTime = 1.5f;
+                spawnTime = 0.7f;
                 break;
             case 200:
-                spawnTime = 1f;
+                spawnTime = 0.6f;
                 break;
             case 250:
                 spawnTime = 0.5f;
+                break;
+            case 300:
+                spawnTime = 0.4f;
+                break;
+            case 350:
+                spawnTime = 0.3f;
+                break;
+            case 400:
+                spawnTime = 0.2f;
+                break;
+            case 500:
+                spawnTime = 0.15f;
+                break;
+            case 1000:
+                spawnTime = 0.1f;
+                break;
+            case 1500:
+                spawnTime = 0.05f;
+                break;
+            case 2000:
+                spawnTime = 0.01f;
                 break;
         }
     }

@@ -16,6 +16,8 @@ public class PlayerCursor : MonoBehaviour
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = Vector2.MoveTowards(transform.position, mousePosition, GameManager.Instance.GetMoveSpeed() * Time.deltaTime);
 
+        transform.localScale = GameManager.Instance.GetScale();
+
         if (Input.GetMouseButtonDown(0)) UsePower();
     }
     void UsePower()
