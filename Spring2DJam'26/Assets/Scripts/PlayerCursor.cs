@@ -55,6 +55,7 @@ public class PlayerCursor : MonoBehaviour
             ParticleSystem.MainModule shockwaveMain = shockwave.main;
             shockwaveMain.startSize = GameManager.Instance.GetPowerScale() + 5.5f;
             shockwave.Play();
+            AudioManager.Instance.Play("Shockwave");
             boxCollider.size = new Vector2(GameManager.Instance.GetPowerScale(), GameManager.Instance.GetPowerScale());
             GameManager.Instance.SetPowerTimer(GameManager.Instance.GetPowerCooldown());
         }

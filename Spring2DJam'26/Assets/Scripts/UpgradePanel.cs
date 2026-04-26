@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class UpgradePanel : MonoBehaviour
@@ -21,9 +22,15 @@ public class UpgradePanel : MonoBehaviour
         if (GameManager.Instance.GetFollowersNumber() % 50 == 0 && !GameManager.Instance.IsUpgraded() && GameManager.Instance.GetFollowersNumber() < 200) ShowUpgradeUI();
         if (GameManager.Instance.GetFollowersNumber() % 100 == 0 && !GameManager.Instance.IsUpgraded() && GameManager.Instance.GetFollowersNumber() < 500) ShowUpgradeUI();
         if (GameManager.Instance.GetFollowersNumber() % 500 == 0 && !GameManager.Instance.IsUpgraded() && GameManager.Instance.GetFollowersNumber() < 2000) ShowUpgradeUI();
+        if (GameManager.Instance.GetFollowersNumber() % 1000 == 0 && !GameManager.Instance.IsUpgraded()) ShowUpgradeUI();
 
         //DEBUG
         if (Input.GetKeyDown(KeyCode.Pause)) ShowUpgradeUI();
+        if (Input.GetKeyDown(KeyCode.Keypad0)) GameManager.Instance.SetFollowersNumber(0);
+        if (Input.GetKeyDown(KeyCode.Keypad1)) GameManager.Instance.SetFollowersNumber(200);
+        if (Input.GetKeyDown(KeyCode.Keypad2)) GameManager.Instance.SetFollowersNumber(500);
+        if (Input.GetKeyDown(KeyCode.Keypad3)) GameManager.Instance.SetFollowersNumber(2000);
+        if (Input.GetKeyDown(KeyCode.Keypad4)) GameManager.Instance.SetFollowersNumber(5000);
     }
     void ShowUpgradeUI()
     {

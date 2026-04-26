@@ -5,7 +5,7 @@ public class MenuUI : MonoBehaviour
 {
     void Start()
     {
-        AudioManager.Instance.Play("Theme05");
+        AudioManager.Instance.Play("Theme03");
     }
     public void Play()
     {

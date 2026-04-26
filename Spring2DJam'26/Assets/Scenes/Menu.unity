@@ -670,6 +670,13 @@ MonoBehaviour:
     pitch: 2.5
     loop: 0
     source: {fileID: 0}
+  - name: Shockwave
+    clip: {fileID: 8300000, guid: 221601a24edd24d41af64a7f85555719, type: 3}
+    mixerGroup: {fileID: 2645044305863198137, guid: 4ac3e727072312a488276e806231e4e2, type: 2}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &619349032
 Transform:
   m_ObjectHideFlags: 0

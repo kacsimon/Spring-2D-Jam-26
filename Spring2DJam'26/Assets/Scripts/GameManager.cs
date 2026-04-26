@@ -30,8 +30,31 @@ public class GameManager : MonoBehaviour
         scoreText.text = followersNumber.ToString();
         powerCooldownText.gameObject.SetActive(power);
         powerCooldownText.text = powerTimer.ToString("0.0s/") + powerCooldown.ToString("0s");
+
+
+        switch (followersNumber)
+        {
+            case 200:
+                AudioManager.Instance.Stop("Theme03");
+                AudioManager.Instance.PlayOnce("Theme05");
+                break;
+            case 500:
+                AudioManager.Instance.Stop("Theme05");
+                AudioManager.Instance.PlayOnce("Theme04");
+                break;
+            case 2000:
+                AudioManager.Instance.Stop("Theme04");
+                AudioManager.Instance.PlayOnce("Theme02");
+                break;
+            case 5000:
+                AudioManager.Instance.Stop("Theme02");
+                AudioManager.Instance.PlayOnce("Theme01");
+                break;
+        }
     }
     public void IncreaseFollowersNumber() => followersNumber++;
+    //JUST FOR DEBUG!!!
+    public void SetFollowersNumber(int _followerNumbers) => followersNumber = _followerNumbers;
     public int GetFollowersNumber() => followersNumber;
     public void IncreaseMoveSpeed() => moveSpeed++;
     public float GetMoveSpeed() => moveSpeed;
