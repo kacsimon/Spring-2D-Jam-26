@@ -3,7 +3,13 @@ using UnityEngine;
 public class UpgradePanel : MonoBehaviour
 {
     [SerializeField] GameObject upgradePanel;
+    [SerializeField] UpgradeCardSO[] upgradeCardSOArray;
+    [SerializeField] UpgradeCard[] upgradeCardArray;
 
+    void Awake()
+    {
+        SetUpgradeCardUI();
+    }
     void Start()
     {
         upgradePanel.SetActive(false);
@@ -12,21 +18,30 @@ public class UpgradePanel : MonoBehaviour
     void Update()
     {
         if (GameManager.Instance.GetFollowersNumber() % 50 != 0) GameManager.Instance.ResetUpgrade();
-        if (GameManager.Instance.GetFollowersNumber() % 50 == 0 && !GameManager.Instance.IsUpgraded())
-        {
-            Time.timeScale = 0f;
-            upgradePanel.SetActive(true);
-        }
+        if (GameManager.Instance.GetFollowersNumber() % 50 == 0 && !GameManager.Instance.IsUpgraded() && GameManager.Instance.GetFollowersNumber() < 200) ShowUpgradeUI();
+        if (GameManager.Instance.GetFollowersNumber() % 100 == 0 && !GameManager.Instance.IsUpgraded() && GameManager.Instance.GetFollowersNumber() < 500) ShowUpgradeUI();
+        if (GameManager.Instance.GetFollowersNumber() % 500 == 0 && !GameManager.Instance.IsUpgraded() && GameManager.Instance.GetFollowersNumber() < 2000) ShowUpgradeUI();
+
+        //DEBUG
+        if (Input.GetKeyDown(KeyCode.Pause)) ShowUpgradeUI();
     }
-
-    //Set 2 random upgrade
-    //If power (2) locked, don't show 3 and 4
-    //If power (2) unulock, don't show 2
-    void Power()
+    void ShowUpgradeUI()
     {
-        if (GameManager.Instance.IsPower())
-        {
-
-        }
+        if (!GameManager.Instance.IsCardSet()) SetUpgradeCardUI();
+        Time.timeScale = 0f;
+        upgradePanel.SetActive(true);
+    }
+    int GetRandomNumber()
+    {
+        int rng = GameManager.Instance.IsPower() ? Random.Range(1, upgradeCardSOArray.Length) : Random.Range(0, 3);
+        return rng;
+    }
+    void SetUpgradeCardUI()
+    {
+        int rng1 = GetRandomNumber();
+        int rng2 = GetRandomNumber();
+        upgradeCardArray[0].SetUpgradeCardSO(upgradeCardSOArray[rng1]);
+        upgradeCardArray[1].SetUpgradeCardSO(upgradeCardSOArray[rng2]);
+        GameManager.Instance.SetCardSet(true);
     }
 }

@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class PlayerCursor : MonoBehaviour
 {
-    float powerCooldown;
-    float powerScale;
-    float powerDuration;
+    //float powerCooldown = 10f;
+    //float powerScale = 2.5f; //startSize
+    float powerDuration = 0.5f;
+    //float powerTimer;
+    bool isPowerOn;
+    ParticleSystem shockwave;
+    BoxCollider2D boxCollider;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
+        shockwave = GetComponentInChildren<ParticleSystem>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
-
     void Update()
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -19,12 +24,34 @@ public class PlayerCursor : MonoBehaviour
         transform.localScale = GameManager.Instance.GetScale();
 
         if (Input.GetMouseButtonDown(0)) UsePower();
+
+        if (GameManager.Instance.GetPowerTimer() > 0)
+        {
+            float powerTimer = GameManager.Instance.GetPowerTimer();
+            GameManager.Instance.SetPowerTimer(powerTimer -= Time.deltaTime);
+        }
+
+        if (isPowerOn)
+        {
+            powerDuration -= Time.deltaTime;
+            if (powerDuration <= 0)
+            {
+                isPowerOn = false;
+                powerDuration = 0.5f;
+                boxCollider.size = Vector2.one;
+            }
+        }
     }
     void UsePower()
     {
-        if (GameManager.Instance.IsPower())
+        if (GameManager.Instance.IsPower() && GameManager.Instance.GetPowerTimer() <= 0)
         {
+            //GameManager.Instance.SetPowerTimer(0);
             Debug.Log("Using power!");
+            isPowerOn = true;
+            shockwave.Play();
+            boxCollider.size = new Vector2(GameManager.Instance.GetPowerScale(), GameManager.Instance.GetPowerScale());
+            GameManager.Instance.SetPowerTimer(GameManager.Instance.GetPowerCooldown());
         }
     }
 }

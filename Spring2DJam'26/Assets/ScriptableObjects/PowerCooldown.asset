@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PowerCooldown
   m_EditorClassIdentifier: 
   upgradeId: 3
-  upgradeName: Power Cooldown
+  upgradeName: Power CD
   upgradeDescription: Decrease the cooldown of your power

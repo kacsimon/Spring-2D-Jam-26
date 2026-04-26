@@ -5005,6 +5005,12 @@ MonoBehaviour:
   - {r: 0.78823537, g: 0.9333334, b: 0.9490197, a: 1}
   - {r: 1, g: 0.5137255, b: 0.6156863, a: 1}
   transformationPS: {fileID: 3666663999142988622}
+  sprites:
+  - {fileID: 21300000, guid: b2da0bb67c1c5424583c470230f372be, type: 3}
+  - {fileID: -516565960, guid: 024b407d027ef334081c7967d5caa781, type: 3}
+  - {fileID: 18630159, guid: 024b407d027ef334081c7967d5caa781, type: 3}
+  - {fileID: -1060624147, guid: 024b407d027ef334081c7967d5caa781, type: 3}
+  - {fileID: -1031747255, guid: 024b407d027ef334081c7967d5caa781, type: 3}
 --- !u!61 &7126889565091414606
 BoxCollider2D:
   m_ObjectHideFlags: 0

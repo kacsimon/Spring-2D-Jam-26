@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e669b92e36bb0a1409e73e282b88cec6, type: 3}
   m_Name: Power
   m_EditorClassIdentifier: 
-  upgradeId: 2
+  upgradeId: 0
   upgradeName: Unlock Power
   upgradeDescription: On click unleash a wave that transform nearby shapes to followers

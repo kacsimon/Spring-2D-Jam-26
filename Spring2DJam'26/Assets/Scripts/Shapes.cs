@@ -5,6 +5,7 @@ public class Shapes : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] Color[] colors;
     [SerializeField] ParticleSystem transformationPS;
+    [SerializeField] Sprite[] sprites;
 
     Follower follower;
     BoxCollider2D boxCollider2D;
@@ -20,6 +21,7 @@ public class Shapes : MonoBehaviour
     {
         float scaleSize = Random.Range(0.3f, 0.5f);
         transform.localScale = new Vector3(scaleSize, scaleSize, scaleSize);
+        spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
     }
     void Update()
     {
@@ -38,6 +40,7 @@ public class Shapes : MonoBehaviour
             ParticleSystem.MainModule transformationPSMain = transformationPS.main;
             transformationPSMain.startColor = spriteRenderer.color;
             transformationPS.Play();
+            AudioManager.Instance.Play("Evolve");
         }
     }
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e669b92e36bb0a1409e73e282b88cec6, type: 3}
   m_Name: Speed
   m_EditorClassIdentifier: 
-  upgradeId: 0
+  upgradeId: 1
   upgradeName: Speed
   upgradeDescription: Increase movement
