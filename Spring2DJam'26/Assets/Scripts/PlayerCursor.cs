@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerCursor : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class PlayerCursor : MonoBehaviour
 
         transform.localScale = GameManager.Instance.GetScale();
 
-        if (Input.GetMouseButtonDown(0)) UsePower();
+        if (Input.GetMouseButtonDown(0) && !IsMouseOverUI()) UsePower();
 
         if (GameManager.Instance.GetPowerTimer() > 0)
         {
@@ -42,13 +43,17 @@ public class PlayerCursor : MonoBehaviour
             }
         }
     }
+    bool IsMouseOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
+    }
     void UsePower()
     {
         if (GameManager.Instance.IsPower() && GameManager.Instance.GetPowerTimer() <= 0)
         {
-            //GameManager.Instance.SetPowerTimer(0);
-            Debug.Log("Using power!");
             isPowerOn = true;
+            ParticleSystem.MainModule shockwaveMain = shockwave.main;
+            shockwaveMain.startSize = GameManager.Instance.GetPowerScale() + 5.5f;
             shockwave.Play();
             boxCollider.size = new Vector2(GameManager.Instance.GetPowerScale(), GameManager.Instance.GetPowerScale());
             GameManager.Instance.SetPowerTimer(GameManager.Instance.GetPowerCooldown());

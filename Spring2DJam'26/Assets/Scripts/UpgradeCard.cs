@@ -36,6 +36,7 @@ public class UpgradeCard : MonoBehaviour
                 //power cooldown
                 float powerCooldown = GameManager.Instance.GetPowerCooldown();
                 GameManager.Instance.SetPowerCooldown(powerCooldown / 1.5f); //!!!Check 0!!!
+                if (GameManager.Instance.GetPowerTimer() > GameManager.Instance.GetPowerCooldown()) GameManager.Instance.SetPowerTimer(GameManager.Instance.GetPowerCooldown());
                 break;
             case 4:
                 //power range

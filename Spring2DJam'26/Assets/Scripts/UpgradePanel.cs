@@ -38,8 +38,13 @@ public class UpgradePanel : MonoBehaviour
     }
     void SetUpgradeCardUI()
     {
-        int rng1 = GetRandomNumber();
-        int rng2 = GetRandomNumber();
+        int rng1 = 0;
+        int rng2 = 0;
+        while (rng1 == rng2)
+        {
+            rng1 = GetRandomNumber();
+            rng2 = GetRandomNumber();
+        }
         upgradeCardArray[0].SetUpgradeCardSO(upgradeCardSOArray[rng1]);
         upgradeCardArray[1].SetUpgradeCardSO(upgradeCardSOArray[rng2]);
         GameManager.Instance.SetCardSet(true);
